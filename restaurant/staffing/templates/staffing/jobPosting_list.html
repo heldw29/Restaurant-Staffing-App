@@ -1,0 +1,21 @@
+{% extends "staffing/base.html" %}
+{% block content %}
+
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h6 class="mr-2">Current Job Listings at: {{ user.profile.location }} </h6>
+            </div>
+            <div class="article-title">
+                {% for job in object_list %}
+                    {% if job.location == user.profile.location %}
+                        <li><a class="article-title" href="{% url 'staffing:job-applications' job.id %}">{{ job }}</a>
+                        </li>
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </article>
+
+{% endblock content %}

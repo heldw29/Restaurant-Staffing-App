@@ -1,0 +1,36 @@
+{% extends "staffing/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {% if object %}
+                    <h6>
+                        <legend class="border-bottom mb-4">Update the "{{ object.title }}" Job
+                            at {{ user.profile.restaurant }}</legend>
+                    </h6>
+                {% else %}
+                    <h6>
+                        <legend class="border-bottom mb-4">Create a new Job at {{ user.profile.restaurant }}</legend>
+                    </h6>
+                {% endif %}
+
+                <h6>{{ form|crispy }} </h6>
+
+            </fieldset>
+            <div class="form-group">
+                {% if object %}
+                    <button class="btn btn-secondary btn-sm mt-1 mb-1" type="submit">Update</button>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1"
+                       href="{% url 'staffing:job-delete' object.id %}">Delete</a>
+                {% else %}
+                    <button class="btn btn-outline-info" type="submit">Create</button>
+                {% endif %}
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock content %}

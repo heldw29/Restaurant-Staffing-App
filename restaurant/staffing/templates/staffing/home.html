@@ -1,0 +1,26 @@
+{% extends "staffing/base.html" %}
+{% block content %}
+
+    {% if location_list %}
+        {% for location in location_list %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <h6 class="mr-2">{{ location }} </h6>
+                    </div>
+                    <div class="article-title">
+                        {% for job in job_posting_list %}
+                            {% if job.location == location %}
+                                <li><a class="article-title"
+                                       href="{% url 'staffing:job-detail' job.id %}">{{ job.title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No locations are available.</p>
+    {% endif %}
+
+{% endblock content %}

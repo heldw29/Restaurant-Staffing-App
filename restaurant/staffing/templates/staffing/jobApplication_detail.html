@@ -1,0 +1,23 @@
+{% extends "staffing/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h6 class="mr-2">Job Application for {{ object }} </h6>
+
+            </div>
+            <div class="article-title">
+                <ul>First Name: {{ object.first_name }}</ul>
+                <ul>Last Name: {{ object.last_name }}</ul>
+                <ul>Address: {{ object.address }}</ul>
+                <ul>Phone Number: {{ object.phone_number }}</ul>
+                <ul>Email: {{ object.email }}</ul>
+                <ul>Resume: {{ object.resume }}</ul>
+                <ul>Status: {{ object.get_status_display }}</ul>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'staffing:job-application-update' object.id %}">Accept/Reject</a></ul>
+
+            </div>
+
+    </article>
+
+{% endblock content %}

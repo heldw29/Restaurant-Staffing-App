@@ -1,0 +1,20 @@
+{% extends "staffing/base.html" %}
+{% block content %}
+
+    <article class="media content-section">
+
+        <div class="media-body">
+            <div class="article-metadata">
+
+                <h6 class="mr-2">Your list of jobs at: <a
+                        href="{% url 'staffing:locations-update' object.pk %}">{{ object }} </a></h6>
+            </div>
+            <div class="article-title">
+                {% for job in job_posting_list %}
+                    <li><a class="article-title" href="{% url 'staffing:job-update' job.pk %}">{{ job }}</a></li>
+                {% endfor %}
+            </div>
+        </div>
+    </article>
+
+{% endblock content %}

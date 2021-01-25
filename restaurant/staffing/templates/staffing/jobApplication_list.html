@@ -1,0 +1,21 @@
+{% extends "staffing/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        {% if object_list %}
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h6 class="mr-2">Job Applications for {{ object_list.0.job_posting }} </h6>
+                </div>
+                <div class="article-title">
+                    {% for job in object_list %}
+                        <li><a class="article-title"
+                               href="{% url 'staffing:job-application-read' job.pk %}">{{ job }}</a></li>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <h6>There are currently no job applicants for this job</h6>
+        {% endif %}
+    </article>
+
+{% endblock content %}

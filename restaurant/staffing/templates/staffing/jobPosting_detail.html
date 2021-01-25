@@ -1,0 +1,24 @@
+{% extends "staffing/base.html" %}
+{% block content %}
+
+
+    <article class="media content-section">
+
+        <div class="media-body">
+            <div class="article-metadata">
+                <h3 class="mr-2">{{ object.title }} </h3>
+                <small class="text-muted">{{ object.location }}</small>
+            </div>
+            <div class="article-title">
+
+                <small class="article-title">Job Description: {{ object.description }}
+                    <button type="button">
+                        <a href="{% url 'staffing:job-application' object.location_id object.pk %}">Apply</a>
+                    </button>
+                </small>
+
+            </div>
+        </div>
+    </article>
+
+{% endblock content %}
